@@ -1,6 +1,5 @@
 # ADF Business Financial Performance & Cash Flow Analysis
 > *Analyzed business income, expenses, and transaction records to identify major cost drivers, investigate financial-data discrepancies, and build a Power BI reporting solution for better financial visibility and decision-making.*
-
 ---
 ## ⚙️ Project Type Flags
 > 
@@ -11,8 +10,6 @@
 - [ ] Predictive Modelling / Machine Learning
 - [x] Data Cleaning / Wrangling
 - [x] End-to-End (multiple of the above)
-- [ ] Other: ___________
-
 ---
 ## Table of Contents
 1. [Project Overview](#1-project-overview)
