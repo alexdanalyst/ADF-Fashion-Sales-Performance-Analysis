@@ -1,22 +1,19 @@
-# [Project Title]
-> *One sentence. What did you analyze, build, or solve - and why does it matter?*
+# ADF Business Financial Performance & Cash Flow Analysis
+> *Analyzed business income, expenses, and transaction records to identify major cost drivers, investigate financial-data discrepancies, and build a Power BI reporting solution for better financial visibility and decision-making.*
 
 ---
-
 ## ⚙️ Project Type Flags
-> *Check what applies. This helps reviewers and collaborators understand the nature of the work at a glance. Delete this block before publishing.*
-
-- [ ] Exploratory Data Analysis (EDA)
+> 
+- [x] Exploratory Data Analysis (EDA)
 - [ ] SQL Analysis / Querying
-- [ ] Dashboard / Data Visualization
-- [ ] Data Pipeline / ETL
+- [x] Dashboard / Data Visualization
+- [x] Data Pipeline / ETL
 - [ ] Predictive Modelling / Machine Learning
-- [ ] Data Cleaning / Wrangling
-- [ ] End-to-End (multiple of the above)
+- [x] Data Cleaning / Wrangling
+- [x] End-to-End (multiple of the above)
 - [ ] Other: ___________
 
 ---
-
 ## Table of Contents
 1. [Project Overview](#1-project-overview)
 2. [Objectives](#2-objectives)
@@ -34,62 +31,45 @@
 14. [Author](#14-author)
 
 ---
-
 ## 1. Project Overview
+**Context:** ADF maintains financial records documenting customer payments, business expenses, materials purchases, labour, utilities, and other operational transactions. The supplied workbook contains transaction summaries alongside itemized expense records, but the information requires structured analysis to provide a clearer view of business cash movements and spending patterns.
 
-<!--
-  Write 3–5 sentences in plain language.
-  Cover: context → problem → approach → outcome.
-  Read it out loud. If it sounds like a form - rewrite it.
+**Problem Statement:** How can ADF organize its financial records, identify its largest expense categories, monitor income and expenditure over time, and detect inconsistencies that could affect financial reporting and business decisions?
 
-  WHAT GOOD LOOKS LIKE:
-  "A mid-size retail business was seeing inconsistent revenue across
-  its regional stores but couldn't identify the root cause. This project
-  explored 18 months of transaction data across five regions to determine
-  whether underperformance was driven by sales volume, pricing, or return
-  rates. The analysis revealed that one region's gap was almost entirely
-  explained by an unusually high return rate on a single product category -
-  a finding invisible in the company's top-level reporting."
+**Approach:** The project uses Microsoft Power BI and Power Query to prepare the financial data, examine data-quality issues, structure the transaction and expense-detail tables, and develop an interactive dashboard. Measures will be created to track recorded income, expenses, net cash movement, expense composition, and financial trends.
 
-  WHAT TO AVOID:
-  "This project analyzes sales data to find trends and insights."
-  (Too vague. Could describe 10,000 projects. Describes none of them.)
--->
+**Outcome:** The intended deliverable is an interactive Power BI reporting solution that provides visibility into recorded financial activity, highlights expense drivers, and identifies transactions requiring further verification. Final dashboard findings and recommendations will be documented after the calculations and source records have been validated.
 
-**Context:** [The business, research, or personal situation that motivated this project.]
+### Initial Dataset Profile
 
-**Problem Statement:** [The specific question or challenge you were addressing.]
+| Measure | Initial value |
+|---|---:|
+| Transaction records | 24 |
+| Expense-detail records | 87 |
+| Recorded income | 817,000 |
+| Recorded expenses | 712,050 |
+| Net cash movement | 104,950 |
+| Transactions flagged for review | 4 |
+| Earliest transaction date | 7 October 2023 |
+| Latest transaction date | 10 March 2026 |
 
-**Approach:** [In 1–2 sentences - how did you tackle it?]
+*These are preliminary figures calculated from the supplied workbook.*
 
-**Outcome:** [What did you produce or discover?]
+---
 
 ---
 
 ## 2. Objectives
 
-<!--
-  Write objectives that are specific enough to succeed or fail.
-  Use action-oriented verbs: Identify, Determine, Quantify, Build, Evaluate.
+- **Primary Objective:** Build an interactive Power BI dashboard that consolidates ADF's recorded income and expenses into a clear view of financial activity and net cash movement.
 
-  WHAT GOOD LOOKS LIKE:
-  ✅ "Determine whether customer churn rate correlates with support ticket volume."
-  ✅ "Identify the top three revenue-driving product categories across all regions."
-  ✅ "Build a reproducible pipeline that ingests and cleans daily sales exports."
+- **Secondary Objective 1:** Identify the largest expense categories and quantify their contributions to total recorded expenditure.
 
-  WHAT TO AVOID:
-  ❌ "Explore the data."
-  ❌ "Gain insights."
-  ❌ "Understand trends."
-  (These can't fail - which means they can't succeed either.)
--->
+- **Secondary Objective 2:** Analyze income, expenses, and net cash movement across the available transaction dates to identify periods of higher or lower financial activity.
 
-- **Primary Objective:** [The main thing you set out to do]
-- **Secondary Objective 1:** [Supporting goal]
-- **Secondary Objective 2:** [Supporting goal]
-- **Secondary Objective 3:** [Remove if not applicable]
+- **Secondary Objective 3:** Identify discrepancies, ambiguous entries, and incomplete transaction information that require verification before financial conclusions are drawn.
 
-> 💡 *Every analysis decision in this project traces back to one of these objectives.*
+- **Secondary Objective 4:** Develop actionable recommendations for improving expense monitoring, transaction documentation, and financial reporting.
 
 ---
 
@@ -97,434 +77,378 @@
 
 ### Scope
 
-<!--
-  WHAT GOOD LOOKS LIKE:
-  In Scope: "Transaction-level data for Regions A–E, Jan 2023–Jun 2024.
-             Analysis covers revenue, return rates, and product category performance."
-  Out of Scope: "Customer demographics and marketing spend data were excluded -
-                 demographic data was incomplete for two regions, and marketing
-                 data sits in a separate system outside this engagement."
-
-  WHAT TO AVOID:
-  ❌ Leaving Out of Scope blank. This is the section that protects your credibility.
-     If you don't define the fence, reviewers assume you missed things.
--->
-
 | Dimension | Details |
-|-----------|---------|
-| **In Scope** | [What is included - data sources, time periods, segments] |
-| **Out of Scope** | [What you explicitly excluded - and a brief reason why] |
-| **Time Period** | [Date range of the data or the project itself] |
-| **Granularity** | [Unit of analysis - row-level, daily aggregates, per-user, etc.] |
+|---|---|
+| **In Scope** | Recorded income, business expenses, expense categories, transaction dates, descriptions, balances, and data-quality review notes |
+| **Out of Scope** | Verified accounting profit, tax calculations, inventory valuation, receivables ageing, and audited financial statements, because the necessary supporting information is not established in the supplied workbook |
+| **Time Period** | 7 October 2023 – 10 March 2026 |
+| **Granularity** | Transaction-level summaries and itemized expense records |
+| **Business Focus** | Financial monitoring, expense analysis, cash-flow visibility, and data-quality control |
 
 ### Tools & Technologies
 
-<!--
-  List only what you actually used on this project.
-  This is not your skills section - it's the project's technical context.
--->
-
 | Category | Tool(s) Used |
-|----------|-------------|
-| Data Storage | [e.g., PostgreSQL, CSV files, BigQuery, S3] |
-| Data Processing | [e.g., Python, R, SQL, Excel, dbt] |
-| Analysis | [e.g., pandas, dplyr, custom SQL queries] |
-| Visualization | [e.g., Matplotlib, Tableau, Power BI, Looker] |
-| Version Control | [e.g., Git / GitHub] |
-| Documentation | [e.g., Markdown, Notion] |
-| Other | [Any additional tools] |
+|---|---|
+| Data Storage | Microsoft Excel workbook |
+| Data Processing | Power Query |
+| Analysis | Power BI measures and exploratory analysis |
+| Visualization | Microsoft Power BI |
+| Version Control | Git and GitHub |
+| Documentation | Markdown |
+| Other | Data modelling and financial metric validation |
+
+*This table describes the intended implementation. Update it to reflect the tools actually used when the project is complete.*
 
 ---
 
 ## 4. Repository Structure
 
-```
-[project-root]/
+```text
+ADF-Financial-Performance-Analysis/
 │
 ├── data/
-│   ├── raw/                  # Original, unmodified source data - never edited
-│   ├── processed/            # Cleaned and transformed data
-│   └── external/             # Reference data, lookup tables, third-party files
+│   ├── raw/
+│   │   └── ADF_SALES_REPORT.xlsx
+│   ├── processed/
+│   │   └── README.md
+│   └── external/
 │
-├── notebooks/                # Jupyter, R Markdown, or Colab notebooks
+├── powerbi/
+│   └── ADF_Financial_Analysis.pbix
 │
-├── scripts/                  # Reusable .py, .R, or .sh processing files
+├── queries/
+│   └── README.md
 │
-├── queries/                  # SQL files (retain this folder for SQL-heavy projects)
-│   ├── exploratory/          # Ad-hoc or investigative queries
-│   ├── transformations/      # Cleaning and reshaping logic
-│   └── final/                # Production-ready or presentation queries
+├── reports/
 │
-├── reports/                  # Final outputs: PDFs, slide decks, Word docs
+├── visuals/
+│   ├── executive_overview.png
+│   ├── expense_analysis.png
+│   └── cashflow_trends.png
 │
-├── visuals/                  # Exported charts, dashboard screenshots, ERD diagrams
+├── docs/
+│   ├── data_dictionary.md
+│   ├── data_quality_log.md
+│   └── methodology.md
 │
-├── docs/                     # Data dictionaries, schema notes, reference material
-│
-├── project_metadata.yml      # Machine-readable metadata (optional)
-└── README.md                 # You are here
+└── README.md
 ```
 
-> ⚠️ *Delete folders you didn't use. An empty folder is worse than no folder.*
-> SQL-heavy projects: keep `queries/`. Analysis-only projects: keep `notebooks/`. Both? Keep both.
-
 ---
-
 ## 5. Data Workflow
 
-<!--
-  Show how data moved through your project - from source to output.
-  Every transformation decision should be traceable here.
-
-  WHAT GOOD LOOKS LIKE:
-  1. Source: "Monthly CSV exports pulled from the internal POS system.
-              Five files, one per region, covering Jan 2023–Jun 2024."
-  2. Ingestion: "Loaded into Python using pandas. Files concatenated into
-                 a single dataframe (approx. 340,000 rows)."
-  3. Cleaning: "Removed 1.2% of rows with null transaction IDs.
-                Standardised date formats across regional files.
-                Resolved product category naming inconsistencies (3 variants → 1)."
-  4. Transformation: "Created a returns_rate field at product-category level.
-                      Aggregated to weekly and regional grain for trend analysis."
-  5. Analysis: "Descriptive statistics, regional comparison, return rate
-                segmentation by product category."
-  6. Output: "Summary report (PDF), annotated notebook, processed CSV."
-
-  WHAT TO AVOID:
-  ❌ "Data was cleaned and analysed." (No chain. No decisions. No trust.)
--->
-
+```text
+Source Workbook
+      |
+      v
+Power Query Ingestion
+      |
+      v
+Data Profiling & Quality Checks
+      |
+      v
+Cleaning & Transformation
+      |
+      v
+Data Modelling
+      |
+      v
+DAX Measures & Validation
+      |
+      v
+Power BI Dashboard
+      |
+      v
+Business Insights & Recommendations
 ```
-[Data Source(s)]
-      ↓
-[Ingestion / Collection Method]
-      ↓
-[Cleaning & Transformation]
-      ↓
-[Analysis / Modelling / Querying]
-      ↓
-[Output / Visualisation / Reporting]
-```
+### 1. Source
 
-1. **Source:** [Where did the data come from? Format, size, access method.]
-2. **Ingestion:** [How was it brought in?]
-3. **Cleaning:** [What issues did you find and fix?]
-4. **Transformation:** [What new fields, aggregations, or structures did you create?]
-5. **Analysis:** [What methods - statistical, visual, query-based, model-based?]
-6. **Output:** [What form do the results take?]
+The source is `ADF SALES REPORT.xlsx`, containing three worksheets:
+
+- `Transactions` — 24 transaction summaries and supporting notes.
+- `Expense Detail` — 87 itemized expense records.
+- `Category` — a reference list of expense categories.
+
+### 2. Ingestion
+
+Import the three worksheets into Power BI through **Home → Get Data → Excel Workbook → Transform Data**.
+
+Assign clear query names and inspect the columns, data types, and relationships before loading the data model.
+
+### 3. Cleaning
+
+The cleaning process will include:
+
+- Confirming that transaction IDs are valid and identifying duplicate records.
+- Standardizing date, text, and numeric data types.
+- Checking for missing values and inconsistent category names.
+- Investigating transactions flagged through `NeedsReview`.
+- Checking whether recorded net movement equals income minus expense.
+- Comparing transaction-level expense totals with the itemized expense detail.
+- Investigating ambiguous transfers, negative entries, and potentially incomplete descriptions.
+- Preserving original values and documenting corrections rather than silently changing financial records.
+
+### 4. Transformation
+
+Planned transformations include:
+
+- Creating a proper date dimension for time-based analysis.
+- Structuring transaction summaries and expense details into a relational model.
+- Standardizing expense categories.
+- Creating calculated measures for income, expenses, net cash movement, and category contribution.
+- Establishing a documented approach to transaction reconciliation.
+
+### 5. Analysis
+
+The analysis will cover:
+
+- Income and expense trends over time.
+- Expense composition by category.
+- Monthly and annual financial activity where sufficient observations exist.
+- Net cash movement by transaction and period.
+- Transactions requiring review.
+- Reconciliation between summary records and itemized expenses.
+
+### 6. Output
+
+The intended deliverables are a Power BI report, validated financial measures, a data-quality log, documented business findings, and actionable recommendations.
 
 ---
-
 ## 6. Data Model & Schema
+The workbook contains two transaction-related tables and one category lookup table.
 
-<!--
-  Define your fields so that someone reading your analysis can follow along
-  without digging through your code.
+### Dataset / Table: `Transactions`
 
-  WHAT GOOD LOOKS LIKE (one row example):
-  | transaction_id | string | Unique identifier per sales transaction | TXN-00482 |
-  | return_flag    | boolean | Whether the transaction included a return | TRUE |
-  | region_code    | string | Two-letter identifier for store region | "NE" |
+**Row count:** 24
 
-  WHAT TO AVOID:
-  ❌ Skipping this section because "the field names are self-explanatory."
-     They're not. Not to a reviewer. Not to you in six months.
+| Field Name | Data Type | Description | Example |
+|---|---|---|---|
+| TransactionID | Whole number | Identifier for a transaction summary | 1 |
+| Date | Date | Recorded transaction date | 2023-10-07 |
+| Year | Whole number | Calendar year | 2023 |
+| Month | Whole number | Calendar month number | 10 |
+| Source | Text | Source or record group | ADF Sales |
+| Description | Text | Summary of the transaction | Daily overhead |
+| PreviousBalance | Decimal | Previously recorded balance, where available | 32,500 |
+| Income | Whole number | Recorded income for the transaction | 68,500 |
+| Expense | Whole number | Recorded expenditure for the transaction | 40,500 |
+| Net | Whole number | Recorded income minus expense | 28,000 |
+| Balance | Whole number | Recorded balance field | 28,000 |
+| NeedsReview | Boolean | Indicates whether the transaction requires review | FALSE |
+| ReviewNote | Text | Explanation of an identified issue | Amount requires confirmation |
+| Notes | Text | Additional transaction details | Expense breakdown |
 
-  📌 FOR SQL PROJECTS: If you have multiple tables, create one block per table.
-     Describe join keys and relationships here. Your ERD (Section 7) will
-     visualise what this section describes in text.
+### Dataset / Table: `Expense Detail`
 
-  📌 FOR NON-SQL PROJECTS: Describe the shape of your dataset informally
-     if a formal schema doesn't apply. Even one paragraph is more helpful than nothing.
--->
+**Row count:** 87
 
-### Dataset / Table: `[name]`
+| Field Name | Data Type | Description | Example |
+|---|---|---|---|
+| TransactionID | Whole number | Links the expense record to a transaction | 1 |
+| Date | Date | Date associated with the expense | 2023-10-07 |
+| Year | Whole number | Calendar year | 2023 |
+| Month | Whole number | Calendar month number | 10 |
+| Source | Text | Source or record group | ADF Sales |
+| Transaction | Text | Transaction description or grouping | Daily overhead |
+| ExpenseItem | Text | Individual expense item | Salaries |
+| Category | Text | Expense classification | Salaries |
+| Amount | Whole number | Recorded expense amount | 13,000 |
 
-| Field Name | Data Type | Description | Example Value |
-|------------|-----------|-------------|---------------|
-| `[field_1]` | [string / int / date / float / boolean] | [What this field represents] | [Non-sensitive example] |
-| `[field_2]` | [string / int / date / float / boolean] | [What this field represents] | [Non-sensitive example] |
-| `[field_3]` | [string / int / date / float / boolean] | [What this field represents] | [Non-sensitive example] |
+### Dataset / Table: `Category`
 
-> **Row count (approx.):** [X rows]
-> **Date range:** [Start] – [End]
-> **Key join / relationship:** [e.g., `orders.customer_id` → `customers.id`]
+**Row count:** 16
 
-*Add additional table blocks as needed for multi-table projects.*
+| Field Name | Data Type | Description | Example |
+|---|---|---|---|
+| Category | Text | Expense category reference | Gas / Fuel |
 
----
+### Proposed Data Model
 
-## 7. ERD - Entity Relationship Diagram
-### *(Primarily for SQL Projects - remove this section if not applicable)*
+A practical starting point is a transaction-summary table linked to its expense-detail records by `TransactionID`.
 
-<!--
-  An ERD shows how your tables connect to each other visually.
-  It is the fastest way for a reviewer to understand the data structure
-  of a SQL project without reading every query.
-
-  HOW TO INCLUDE YOUR ERD:
-  Option A - Image embed (most common):
-    Export your ERD from dbdiagram.io, DBeaver, Lucidchart, or similar.
-    Save to /visuals/erd.png and reference it below.
-
-  Option B - dbdiagram.io code block (version-controllable):
-    Paste your schema definition code directly in the fenced block below.
-    Anyone can paste it into dbdiagram.io to regenerate the visual.
-
-  Option C - Mermaid diagram (renders natively in GitHub):
-    Use the mermaid code block syntax below.
-    GitHub will render this as a diagram automatically.
-
-  PICK ONE. Don't use all three. Delete the options you don't use.
--->
-
-### Option A - Embedded Image
-![ERD Diagram](visuals/erd.png)
-*[Brief caption: e.g., "Three-table schema - orders, customers, and products joined on shared IDs."]*
-
----
-
-### Option B - dbdiagram.io Schema Definition
-```
-Table orders {
-  order_id    int     [pk]
-  customer_id int     [ref: > customers.customer_id]
-  product_id  int     [ref: > products.product_id]
-  order_date  date
-  amount      float
-}
-
-Table customers {
-  customer_id int  [pk]
-  region_code string
-  signup_date date
-}
-
-Table products {
-  product_id   int    [pk]
-  category     string
-  unit_price   float
-}
-```
-*Paste this into [dbdiagram.io](https://dbdiagram.io) to view the visual.*
-
----
-
-### Option C - Mermaid Diagram *(renders on GitHub)*
 ```mermaid
 erDiagram
-    ORDERS {
-        int order_id PK
-        int customer_id FK
-        int product_id FK
-        date order_date
-        float amount
+    TRANSACTIONS ||--o{ EXPENSE_DETAIL : "has expense items"
+    CATEGORY ||--o{ EXPENSE_DETAIL : "classifies"
+    DIM_DATE ||--o{ TRANSACTIONS : "filters by date"
+    DIM_DATE ||--o{ EXPENSE_DETAIL : "filters by date"
+
+    TRANSACTIONS {
+        int TransactionID PK
+        date Date
+        int Income
+        int Expense
+        int Net
+        int Balance
+        boolean NeedsReview
     }
-    CUSTOMERS {
-        int customer_id PK
-        string region_code
-        date signup_date
+
+    EXPENSE_DETAIL {
+        int TransactionID FK
+        date Date
+        string ExpenseItem
+        string Category
+        int Amount
     }
-    PRODUCTS {
-        int product_id PK
-        string category
-        float unit_price
+
+    CATEGORY {
+        string Category
     }
-    ORDERS ||--o{ CUSTOMERS : "placed by"
-    ORDERS ||--o{ PRODUCTS : "contains"
+
+    DIM_DATE {
+        date Date PK
+        int Year
+        int Month
+    }
 ```
 
+**Important modelling considerations:**
+
+- `Transactions[TransactionID]` should be unique before it is used as the one-side of a relationship.
+- `Expense Detail[TransactionID]` may repeat because one transaction can contain several expense items.
+- The category lookup should have unique category values before being related to the expense-detail table.
+- A shared date dimension can filter both transaction summaries and expense details.
+- Avoid directly summing transaction-level expenses and itemized expenses together: they represent different levels of detail and could double-count expenditure.
+- The model must be validated against the actual Power BI relationships before the diagram is considered final.
+
 ---
 
-**Table Relationships Summary:**
-
-| Relationship | Join Key | Type |
-|-------------|----------|------|
-| `orders` → `customers` | `customer_id` | Many-to-One |
-| `orders` → `products` | `product_id` | Many-to-One |
-| [Add rows as needed] | | |
-
----
-
-## 8. Analysis & Metrics
-
-<!--
-  Explain what you measured and how - before you share what you found.
-
-  WHAT GOOD LOOKS LIKE:
-  Metric: "Customer Return Rate"
-  Definition: "Number of transactions flagged as returns divided by total
-               transactions, calculated at product-category and regional grain."
-  Why It Matters: "Return rate - not sales volume - was hypothesised to
-                  explain regional revenue gaps. This metric tests that hypothesis."
-
-  WHAT TO AVOID:
-  ❌ Defining a metric only in code: SUM(returns) / COUNT(transaction_id)
-     That's an implementation. Write the plain-language definition here.
-     Both belong in your project - the definition in the README,
-     the implementation in the code.
--->
+## 7. Analysis & Metrics
 
 ### Analytical Approach
 
-[Describe how you approached the analysis. Were you exploring patterns? Testing a hypothesis? Building and validating a pipeline? Be honest about your method - exploratory work is valid, just call it that.]
+This is an exploratory financial-analysis project focused on descriptive analysis, expense segmentation, cash-flow monitoring, and data-quality investigation.
+
+The analysis begins by establishing reliable definitions for the financial measures. It then examines patterns across transaction dates and expense categories, while investigating whether inconsistencies in the source records could affect the interpretation of results.
+
+The project does not assume that recorded net cash movement is equivalent to accounting profit. Customer deposits, payments to third parties, transfers, personal expenses, and incomplete transaction information may require different accounting treatment.
 
 ### Key Metrics Defined
 
 | Metric | Plain-Language Definition | Why It Matters |
-|--------|--------------------------|----------------|
-| `[Metric 1]` | [What it measures, in one sentence] | [What decision or question it answers] |
-| `[Metric 2]` | [What it measures, in one sentence] | [What decision or question it answers] |
-| `[Metric 3]` | [What it measures, in one sentence] | [What decision or question it answers] |
+|---|---|---|
+| Total Recorded Income | Sum of the income amounts recorded in the transaction table | Establishes the volume of recorded incoming funds |
+| Total Recorded Expenses | Sum of the expense amounts recorded in the transaction table | Measures recorded expenditure |
+| Net Cash Movement | Total recorded income minus total recorded expenses | Shows the net movement implied by the recorded transactions |
+| Expense Category Share | Expense amount for a category divided by total recorded expenses | Identifies the largest spending categories |
+| Average Transaction Income | Total recorded income divided by the number of transactions with income | Provides a basic measure of income per income-generating transaction |
+| Expense-to-Income Ratio | Recorded expenses divided by recorded income | Shows expenditure relative to recorded incoming funds |
+| Transactions Requiring Review | Count of transactions flagged for further verification | Helps prioritize data-quality investigation |
+| Monthly Income | Total recorded income grouped by calendar month | Tracks the timing of incoming funds |
+| Monthly Expenses | Total recorded expenses grouped by calendar month | Tracks changes in spending over time |
+
+*All metrics must be implemented and validated in Power BI before they are reported as final dashboard outputs.*
 
 ### Methods Used
 
-- [e.g., Descriptive statistics - distribution, central tendency, outlier detection]
-- [e.g., Trend analysis across [time period]]
-- [e.g., Segmentation / group comparison by [dimension]]
-- [e.g., Correlation analysis between [variable A] and [variable B]]
-- [e.g., SQL window functions for [specific aggregation]]
-- [e.g., Custom aggregation or transformation logic in [tool]]
+- Descriptive analysis of financial totals.
+- Time-series analysis across the available dates.
+- Expense-category segmentation.
+- Reconciliation of transaction summaries with expense-detail records.
+- Data-quality profiling and anomaly investigation.
+- Comparative analysis of income, expenses, and net cash movement.
+- Interactive filtering by date, category, and source.
 
 ---
 
-## 9. Key Insights
+## 8. Key Insights
 
-<!--
-  Findings + implications. Not just what happened - what it means.
+The following are preliminary observations from the supplied workbook. They should be treated as initial findings rather than final business conclusions.
 
-  WHAT GOOD LOOKS LIKE:
-  ✅ "Return rates, not sales volume, explain Region A's underperformance.
-      Region A's return rate on home goods was 34% - more than double the
-      company average. Revenue was not lost at the point of sale; it was
-      lost post-sale through refunds. This points to a fulfilment or
-      product quality issue specific to that region, not a demand problem."
+**Insight 1: Recorded income exceeds recorded expenditure in aggregate**
 
-  WHAT TO AVOID:
-  ❌ "Region A had lower revenue than other regions in Q4."
-     (That's an observation. It describes what happened.
-      An insight says what it means and where to look next.)
+The workbook contains 817,000 in recorded income and 712,050 in recorded expenses, producing a net cash movement of 104,950. This establishes a positive aggregate difference in the recorded figures, but it does not prove that the business generated 104,950 in accounting profit.
 
-  Aim for 3–6 insights. Quality over quantity.
--->
+**Insight 2: Materials are the largest recorded expense category**
 
-**Insight 1: [Short descriptive headline]**
-[What you found + what it suggests. One short paragraph.]
+The itemized expense records attribute 227,350 to Materials, making it the largest category by recorded amount. This suggests that monitoring materials purchases may be important for understanding spending patterns. The underlying entries should still be reconciled with transaction summaries.
 
-**Insight 2: [Short descriptive headline]**
-[What you found + what it suggests.]
+**Insight 3: Gas and fuel represent another substantial expense category**
 
-**Insight 3: [Short descriptive headline]**
-[What you found + what it suggests.]
+Gas / Fuel totals 134,300 in the expense-detail table. This makes fuel and generator-related spending another useful area to investigate for expense monitoring and operational planning.
 
-**Insight 4 (if applicable): [Short descriptive headline]**
-[What you found + what it suggests.]
+**Insight 4: Some transactions require additional verification**
+
+Four transaction summaries are flagged for review. Their notes include uncertainty around a customer receipt, unpriced materials, and ambiguous transfer or payment entries. These issues could affect the reliability of the recorded totals and should be resolved before making firm financial decisions.
+
+**Insight 5: The available records are unevenly distributed over time**
+
+The workbook contains records from October 2023, July–December 2025, and March 2026, with substantial gaps between these periods. Month-to-month and year-over-year comparisons may therefore be incomplete or misleading.
 
 ---
 
-## 10. Recommendations
-
-<!--
-  Action-oriented. Addressed to a real audience.
-  Tied explicitly to the insight that supports each one.
-
-  WHAT GOOD LOOKS LIKE:
-  Priority: High
-  Recommendation: "Conduct a fulfilment audit for home goods deliveries
-                   in Region A - specifically investigating whether returns
-                   correlate with a particular warehouse, carrier, or SKU batch."
-  Based On: Insight 1 - return rate anomaly in Region A
-  Owner: Operations / Supply Chain team
-
-  WHAT TO AVOID:
-  ❌ "Improve the return rate."
-     (Not actionable. Doesn't say who, how, or where to start.)
-  ❌ "Further analysis is needed."
-     (This is a placeholder, not a recommendation.)
--->
+## 9. Recommendations
 
 | Priority | Recommendation | Based On | Suggested Owner |
-|----------|---------------|----------|-----------------|
-| High | [Specific, actionable step] | [Insight it comes from] | [Who should act] |
-| Medium | [Specific, actionable step] | [Insight it comes from] | [Who should act] |
-| Low | [Exploratory or longer-term suggestion] | [Insight it comes from] | [Who should act] |
+|---|---|---|---|
+| High | Resolve the four flagged transactions by verifying receipts, material costs, and ambiguous payment directions against source records. | Insight 4 | Business owner / Finance |
+| High | Reconcile transaction summaries with itemized expense records and document any differences before publishing final totals. | Insights 1 and 4 | Finance / Data Analyst |
+| High | Establish a consistent recordkeeping template that captures transaction date, transaction ID, income, expense, category, payment direction, and supporting notes. | Insights 4 and 5 | Business owner / Operations |
+| Medium | Monitor materials spending by category and transaction to identify recurring high-cost purchases and opportunities for better purchasing control. | Insight 2 | Procurement / Operations |
+| Medium | Track gas and fuel expenses separately and review recurring consumption-related spending. | Insight 3 | Operations |
+| Medium | Use a monthly financial dashboard to monitor income, expenditure, and net cash movement consistently as new records become available. | Insights 1 and 5 | Business owner / Finance |
+| Low | Expand the dataset with customer-level payment status, order costs, outstanding balances, and transaction classifications where appropriate. | Insights 4 and 5 | Business owner / Data Analyst |
 
 ---
 
-## 11. Assumptions & Limitations
-
-<!--
-  WHAT GOOD LOOKS LIKE:
-  Assumption: "Transaction records were assumed to be complete for all five regions.
-               No validation was performed against source system record counts."
-  Limitation: "The analysis cannot distinguish between returns initiated by
-               the customer vs. returns initiated by the business (e.g., recalls).
-               If business-initiated returns are concentrated in Region A, the
-               return rate finding may reflect a policy decision, not a quality issue."
-
-  WHAT TO AVOID:
-  ❌ Leaving this section blank or writing "None known."
-     Every project has limitations. Documenting them is a sign of
-     analytical maturity - not a confession of failure.
--->
+## 10. Assumptions & Limitations
 
 ### Assumptions
-- [What did you treat as true without being able to verify?]
-- [What simplifications did you make for scope or feasibility?]
-- [What domain rules or definitions did you accept as given?]
+
+- The `Income`, `Expense`, and `Net` fields represent the values recorded in the source workbook; their underlying accounting treatment has not been independently verified.
+- The `TransactionID` field is intended to identify a transaction summary and is expected to link to related expense-detail records.
+- The expense categories are intended to classify itemized spending, but category definitions may require standardization.
+- Transaction dates represent the dates associated with the recorded financial activity.
+- Net cash movement is interpreted as recorded income minus recorded expenses, not as verified accounting profit.
 
 ### Limitations
-- [What gaps exist in the data?]
-- [What analysis was out of scope but could affect interpretation?]
-- [What would a more rigorous version of this project include?]
-- [Are there known biases in the data source or collection method?]
 
-> *The goal here is pre-emptive Q&A. What would a thoughtful skeptic push back on? Document the answer here, before they ask.*
-
----
-
-## 12. Future Enhancements
-
-<!--
-  WHAT GOOD LOOKS LIKE:
-  ✅ "Automate the monthly data pull from the POS export folder using
-      a scheduled Python script, replacing the current manual process."
-  ✅ "Expand the return rate analysis to include carrier-level data,
-      which was unavailable in this dataset but exists in the logistics system."
-
-  WHAT TO AVOID:
-  ❌ "Add a machine learning model."
-     (Vague, and disconnected from the actual findings of this project.)
-  ❌ Listing aspirational features that don't follow logically from the work.
--->
-
-- [ ] [Enhancement 1 - specific and traceable to a real gap in this project]
-- [ ] [Enhancement 2]
-- [ ] [Enhancement 3]
-- [ ] [Enhancement 4]
+- The dataset is small, with 24 transaction summaries and 87 expense-detail records.
+- The date range is discontinuous, so trend comparisons may not represent complete monthly or annual business performance.
+- The currency is not explicitly identified in the supplied workbook.
+- Four transactions have unresolved review flags.
+- Some notes identify unpriced materials or ambiguous payment/transfer entries.
+- The available fields do not establish a complete inventory, cost-of-goods-sold, tax, accounts-receivable, or audited accounting model.
+- Customer-level and product-level profitability cannot be established reliably from the current summary structure alone.
+- The recorded net movement may be affected by deposits, transfers, repayments, personal expenses, and other transactions that require appropriate classification.
+- The analysis cannot independently verify whether all business transactions have been recorded.
 
 ---
 
-## 13. Deliverables
+## 11. Future Enhancements
+
+- [ ] Expand the transaction history to cover all available months and reconcile the records against source documents.
+- [ ] Add transaction classifications to distinguish customer receipts, deposits, supplier payments, transfers, reimbursements, and personal expenses.
+- [ ] Develop a standardized expense-category hierarchy and data-entry validation rules.
+- [ ] Add order-level revenue and direct-cost data to support more reliable product profitability analysis.
+- [ ] Introduce a reconciliation report that flags differences between summary expenses and itemized expense details.
+- [ ] Automate the refresh process when new financial records are added to a structured source file.
+
+---
+
+## 12. Deliverables
 
 | Deliverable | Description | Location |
-|-------------|-------------|----------|
-| [Name] | [What it contains] | [`/path/to/file`] |
-| [Name] | [What it contains] | [`/path/to/file`] |
-| [Name] | [What it contains] | [`/path/to/file`] |
+|---|---|---|
+| Power BI Report | Interactive financial overview and expense-analysis dashboard | `powerbi/ADF_Financial_Analysis.pbix` |
+| Project README | Business problem, methodology, findings, and recommendations | `README.md` |
+| Data Dictionary | Field definitions and table descriptions | `docs/data_dictionary.md` |
+| Data Quality Log | Identified discrepancies, review decisions, and reconciliation notes | `docs/data_quality_log.md` |
+| Dashboard Screenshots | Exported report pages for portfolio presentation | `visuals/` |
+| Methodology Notes | Documented transformation and metric definitions | `docs/methodology.md` |
+---
+
+## 13. Author
+
+**ALEX ESIVBEKPE**
+**Business Data & AI Automation Analyst**
+
+Interested in transforming complex or disorganized information into structured, reliable analysis that helps businesses identify inefficiencies, understand performance, and make better-informed decisions.
+
+- 🔗 LinkedIn: www.linkedin.com/in/alex-esivbekpe
+- 💼 GitHub: https://github.com/alexdanalyst/alexdanalyst
+- 🌐 Portfolio: https://alexdanalyst.github.io
 
 ---
 
-## 14. Author
 
-**[Your Name]**
-[Your role or title - current or target]
-
-- 🔗 [LinkedIn URL]
-- 💼 [Portfolio or GitHub profile URL]
-- 📧 [Email - optional]
-
----
-
-*Last updated: [Month YYYY]*
-*If this template helped you, consider starring the repository.*
